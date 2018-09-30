@@ -14,13 +14,21 @@ WORKDIR /tmp
 RUN apt-get update \
     && apt-get upgrade -q -y \
     && apt-get dist-upgrade -q -y \
-    && apt-get install -q -y wget curl \
+    && apt-get install -q -y wget curl python \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && wget -nv https://www.multichain.com/download/multichain-${MULTICHAIN_VERSION}.tar.gz \
     && tar -xvzf multichain-${MULTICHAIN_VERSION}.tar.gz \
     && cd multichain-${MULTICHAIN_VERSION} \
     && mv multichaind multichain-cli multichain-util /usr/local/bin \
-    && rm -rf /tmp/multichain-${MULTICHAIN_VERSION}
+    && rm -rf /tmp/multichain-${MULTICHAIN_VERSION} \
+    && curl https://bootstrap.pypa.io/get-pip.py | python \
+    && pip install dump-env -q \
+    && mkdir /root/.multichain
+
+
+COPY *.template /root/.multichain
+
+WORKDIR /root/.multichain
 
 CMD ["/bin/bash"]

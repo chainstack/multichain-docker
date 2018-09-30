@@ -1,0 +1,4 @@
+rpcuser=__CHANGEME__
+rpcpassword=__CHANGEME__
+rpcallowip=__CHANGEME__
+rpcport=__CHANGEME__
