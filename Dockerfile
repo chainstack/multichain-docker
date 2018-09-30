@@ -21,11 +21,10 @@ RUN apt-get update \
     && tar -xvzf multichain-${MULTICHAIN_VERSION}.tar.gz \
     && cd multichain-${MULTICHAIN_VERSION} \
     && mv multichaind multichain-cli multichain-util /usr/local/bin \
-    && rm -rf /tmp/multichain-${MULTICHAIN_VERSION} \
     && curl https://bootstrap.pypa.io/get-pip.py | python \
     && pip install dump-env -q \
-    && mkdir /root/.multichain
-
+    && mkdir /root/.multichain \
+    && rm -rf /tmp/multichain-${MULTICHAIN_VERSION}
 
 COPY *.template /root/.multichain
 
