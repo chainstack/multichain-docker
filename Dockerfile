@@ -1,13 +1,13 @@
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 
 LABEL maintainer="alex.khaerov@chainstack.com"
-LABEL vendor="chainstack"
+LABEL vendor="Chainstack"
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV LANG en_US.UTF-8
 ENV LC_ALL C.UTF-8
 
-ENV MULTICHAIN_VERSION 2.0-alpha-5
+ENV MULTICHAIN_VERSION 2.0-beta-1
 
 WORKDIR /tmp
 
